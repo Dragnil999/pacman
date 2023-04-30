@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane onKeyPressed="#keyDispatcher" prefHeight="487.0" prefWidth="368.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PlayFieldController">
+   <children>
+      <ImageView fitHeight="411.0" fitWidth="375.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Pacman_Labyrynth.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="pacmanImage" fitHeight="23.0" fitWidth="23.0" layoutX="175.0" layoutY="259.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+         <image>
+            <Image url="@../images/Pacman_yellow.png" />
+         </image>
+      </ImageView>
+      <Pane fx:id="pacmanPane" layoutX="184.0" layoutY="269.0" prefHeight="1.0" prefWidth="1.0" />
+      <Button layoutX="-97.0" layoutY="247.0" mnemonicParsing="false" text="Button" />
+      <Pane fx:id="corner1" layoutX="125.0" layoutY="269.0" prefHeight="1.0" prefWidth="1.0" />
+      <Pane fx:id="corner2" layoutX="125.0" layoutY="189.0" prefHeight="1.0" prefWidth="1.0" />
+      <Pane fx:id="corner3" layoutX="245.0" layoutY="189.0" prefHeight="1.0" prefWidth="1.0" />
+      <Pane layoutX="167.0" layoutY="149.0" prefHeight="1.0" prefWidth="1.0" />
+   </children>
+</AnchorPane>
