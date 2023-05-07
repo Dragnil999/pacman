@@ -3,6 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 
 <AnchorPane onKeyPressed="#keyDispatcher" prefHeight="487.0" prefWidth="368.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PlayFieldController">
    <children>
@@ -18,9 +19,52 @@
       </ImageView>
       <Pane fx:id="pacmanPane" layoutX="184.0" layoutY="269.0" prefHeight="1.0" prefWidth="1.0" />
       <Button layoutX="-97.0" layoutY="247.0" mnemonicParsing="false" text="Button" />
-      <Pane fx:id="corner1" layoutX="125.0" layoutY="269.0" prefHeight="1.0" prefWidth="1.0" />
+      <Pane fx:id="corner1" layoutX="125.0" layoutY="269.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1.0" prefWidth="1.0" />
       <Pane fx:id="corner2" layoutX="125.0" layoutY="189.0" prefHeight="1.0" prefWidth="1.0" />
       <Pane fx:id="corner3" layoutX="245.0" layoutY="189.0" prefHeight="1.0" prefWidth="1.0" />
-      <Pane layoutX="167.0" layoutY="149.0" prefHeight="1.0" prefWidth="1.0" />
+      <Pane fx:id="corner4" layoutX="165.0" layoutY="149.0" prefHeight="1.0" prefWidth="1.0" />
+      <Pane fx:id="corner5" layoutX="165.0" layoutY="189.0" prefHeight="1.0" prefWidth="1.0" />
+      <Pane fx:id="corner6" layoutX="205.0" layoutY="189.0" prefHeight="1.0" prefWidth="1.0" />
+      <Pane fx:id="corner7" layoutX="125.0" layoutY="149.0" prefHeight="1.0" prefWidth="1.0" />
+      <Pane fx:id="corner8" layoutX="125.0" layoutY="110.0" prefHeight="1.0" prefWidth="1.0" />
+      <Pane fx:id="corner9" layoutX="85.0" layoutY="110.0" prefHeight="1.0" prefWidth="1.0" />
+      <Pane fx:id="corner10" layoutX="85.0" layoutY="57.0" prefHeight="1.0" prefWidth="1.0" />
+      <Pane fx:id="corner11" layoutX="19.0" layoutY="57.0" prefHeight="1.0" prefWidth="1.0" />
+      <Pane fx:id="corner12" layoutX="19.0" layoutY="110.0" prefHeight="1.0" prefWidth="1.0" />
+      <Pane fx:id="corner13" layoutX="19.0" layoutY="150.0" prefHeight="1.0" prefWidth="1.0" />
+      <Pane fx:id="corner14" layoutX="85.0" layoutY="150.0" prefHeight="1.0" prefWidth="1.0" />
+      <Pane fx:id="corner15" layoutX="165.0" layoutY="57.0" prefHeight="1.0" prefWidth="1.0" />
+      <Pane fx:id="corner16" layoutX="165.0" layoutY="110.0" prefHeight="1.0" prefWidth="1.0" />
+      <Pane fx:id="corner17" layoutX="205.0" layoutY="150.0" prefHeight="1.0" prefWidth="1.0" />
+      <Pane fx:id="corner18" layoutX="245.0" layoutY="150.0" prefHeight="1.0" prefWidth="1.0" />
+      <Pane fx:id="corner19" layoutX="245.0" layoutY="110.0" prefHeight="1.0" prefWidth="1.0" />
+      <Pane fx:id="corner20" layoutX="205.0" layoutY="110.0" prefHeight="1.0" prefWidth="1.0" />
+      <Pane fx:id="corner21" layoutX="205.0" layoutY="57.0" prefHeight="1.0" prefWidth="1.0" />
+      <Pane fx:id="corner22" layoutX="285.0" layoutY="57.0" prefHeight="1.0" prefWidth="1.0" />
+      <Pane fx:id="corner23" layoutX="285.0" layoutY="110.0" prefHeight="1.0" prefWidth="1.0" />
+      <Pane fx:id="corner24" layoutX="350.0" layoutY="57.0" prefHeight="1.0" prefWidth="1.0" />
+      <Pane fx:id="corner25" layoutX="350.0" layoutY="110.0" prefHeight="1.0" prefWidth="1.0" />
+      <Pane fx:id="corner26" layoutX="350.0" layoutY="150.0" prefHeight="1.0" prefWidth="1.0" />
+      <Pane fx:id="corner27" layoutX="285.0" layoutY="150.0" prefHeight="1.0" prefWidth="1.0" />
+      <Rectangle fx:id="wall1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="42.0" layoutX="100.0" layoutY="249.0" stroke="BLACK" strokeType="INSIDE" width="13.0" />
+      <Rectangle fx:id="wall2" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="42.0" layoutX="259.0" layoutY="249.0" stroke="BLACK" strokeType="INSIDE" width="13.0" />
+      <Rectangle fx:id="wall3" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="32.0" layoutX="259.0" layoutY="181.0" stroke="BLACK" strokeType="INSIDE" width="13.0" />
+      <Rectangle fx:id="wall4" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="32.0" layoutX="100.0" layoutY="182.0" stroke="BLACK" strokeType="INSIDE" width="13.0" />
+      <Rectangle fx:id="wall5" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="32.0" layoutX="100.0" layoutY="130.0" stroke="BLACK" strokeType="INSIDE" width="13.0" />
+      <Rectangle fx:id="wall6" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="32.0" layoutX="179.0" layoutY="141.0" stroke="BLACK" strokeType="INSIDE" width="14.0" />
+      <Rectangle fx:id="wall7" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="32.0" layoutX="259.0" layoutY="130.0" stroke="BLACK" strokeType="INSIDE" width="14.0" />
+      <Rectangle fx:id="wall8" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="32.0" layoutX="124.0" layoutY="154.0" rotate="90.0" stroke="BLACK" strokeType="INSIDE" width="13.0" />
+      <Rectangle fx:id="wall9" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="32.0" layoutX="232.0" layoutY="155.0" rotate="90.0" stroke="BLACK" strokeType="INSIDE" width="13.0" />
+      <Rectangle fx:id="wall10" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="32.0" layoutX="153.0" layoutY="115.0" rotate="90.0" stroke="BLACK" strokeType="INSIDE" width="13.0" />
+      <Rectangle fx:id="wall11" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="32.0" layoutX="204.0" layoutY="115.0" rotate="90.0" stroke="BLACK" strokeType="INSIDE" width="13.0" />
+      <Rectangle fx:id="wall12" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="115.0" layoutX="2.0" layoutY="48.0" stroke="BLACK" strokeType="INSIDE" width="5.0" />
+      <Rectangle fx:id="wall13" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="163.0" layoutX="91.0" layoutY="-40.0" rotate="90.0" stroke="BLACK" strokeType="INSIDE" width="5.0" />
+      <Rectangle fx:id="wall14" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="163.0" layoutX="277.0" layoutY="-40.0" rotate="90.0" stroke="BLACK" strokeType="INSIDE" width="5.0" />
+      <Rectangle fx:id="wall15" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="115.0" layoutX="365.0" layoutY="47.0" stroke="BLACK" strokeType="INSIDE" width="5.0" />
+      <Rectangle fx:id="wall16" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="32.0" layoutX="120.0" layoutY="75.0" rotate="90.0" stroke="BLACK" strokeType="INSIDE" width="13.0" />
+      <Rectangle fx:id="wall17" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="60.0" layoutX="39.0" layoutY="137.0" rotate="90.0" stroke="BLACK" strokeType="INSIDE" width="5.0" />
+      <Rectangle fx:id="wall18" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="60.0" layoutX="330.0" layoutY="137.0" rotate="90.0" stroke="BLACK" strokeType="INSIDE" width="5.0" />
+      <Rectangle fx:id="wall19" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="32.0" layoutX="238.0" layoutY="75.0" rotate="90.0" stroke="BLACK" strokeType="INSIDE" width="13.0" />
+      <Rectangle fx:id="wall20" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="32.0" layoutX="179.0" layoutY="49.0" stroke="BLACK" strokeType="INSIDE" width="13.0" />
    </children>
 </AnchorPane>

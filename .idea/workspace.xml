@@ -4,27 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3613d5c4-d763-4780-bec0-02973a7f97ef" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/MenuController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/PlayFieldController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/Boundaries.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/PacmanModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/master/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/objects/Pacman.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/master/menu-view.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/master/play-field-view.fxml" afterDir="false" />
+    <list default="true" id="3613d5c4-d763-4780-bec0-02973a7f97ef" name="Changes" comment="First version of movement">
+      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/PlayFieldView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/domain/Crossroad.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/PlayFieldController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/PlayFieldController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/master/play-field-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/master/play-field-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,13 +19,19 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="ac1d3435343f57c553a7083f7647364cdd17d7db" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -63,7 +54,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/danil/IdeaProjects/pacman"
+    "last_opened_file_path": "C:/Users/danil/IdeaProjects/LabaMVC"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -81,5 +72,16 @@
       <updated>1682060705638</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
