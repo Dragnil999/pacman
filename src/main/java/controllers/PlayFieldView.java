@@ -108,6 +108,10 @@ public class PlayFieldView {
     protected Pane corner26;
     @FXML
     protected Pane corner27;
+    @FXML
+    protected Pane wallsPane;
+    @FXML
+    protected Pane cornersPane;
     protected List<Rectangle> walls;
     protected List<Pane> corners;
 

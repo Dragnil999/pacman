@@ -64,8 +64,8 @@ public class PlayFieldController extends PlayFieldView implements Initializable 
                     @Override
                     public void handle(long l) {
                         System.out.println(direction + " " + potentialDirection);
-                        long cornerIntersections = corners.stream().filter(bounds -> bounds.getBoundsInParent().intersects(pacmanPane.getBoundsInParent())).count();
-                        long wallIntersections = walls.stream().filter(bounds -> bounds.getBoundsInParent().intersects(pacmanImage.getBoundsInParent())).count();
+                        long cornerIntersections = cornersPane.getChildren().stream().filter(bounds -> bounds.getBoundsInParent().intersects(pacmanPane.getBoundsInParent())).count();
+                        long wallIntersections = wallsPane.getChildren().stream().filter(bounds -> bounds.getBoundsInParent().intersects(pacmanImage.getBoundsInParent())).count();
                         if (cornerIntersections > 0) {
                             setDirection(potentialDirection);
                         }
