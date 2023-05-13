@@ -5,19 +5,19 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 
-<AnchorPane onKeyPressed="#keyDispatcher" prefHeight="487.0" prefWidth="368.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PlayFieldController">
+<AnchorPane fx:id="playFieldPane" onKeyPressed="#keyDispatcher" prefHeight="487.0" prefWidth="368.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PlayFieldController">
    <children>
       <ImageView fitHeight="411.0" fitWidth="375.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Pacman_Labyrynth.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="pacmanImage" fitHeight="23.0" fitWidth="23.0" layoutX="175.0" layoutY="259.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+      <ImageView fx:id="pacmanImage" disable="true" fitHeight="23.0" fitWidth="23.0" layoutX="175.0" layoutY="259.0" pickOnBounds="true" preserveRatio="true" rotate="180.0" visible="false">
          <image>
             <Image url="@../images/Pacman_yellow.png" />
          </image>
       </ImageView>
-      <Pane fx:id="pacmanPane" layoutX="184.0" layoutY="269.0" prefHeight="1.0" prefWidth="1.0" />
+      <Pane fx:id="pacmanPane" disable="true" layoutX="184.0" layoutY="269.0" prefHeight="1.0" prefWidth="1.0" />
       <Button layoutX="-97.0" layoutY="247.0" mnemonicParsing="false" text="Button" />
       <Pane fx:id="cornersPane" prefHeight="487.0" prefWidth="373.0">
          <children>
@@ -135,6 +135,26 @@
             <Rectangle fx:id="wall17211" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="20.0" layoutX="208.0" layoutY="197.0" rotate="90.0" stroke="BLACK" strokeType="INSIDE" width="5.0" />
             <Rectangle fx:id="wall172111" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="20.0" layoutX="155.0" layoutY="197.0" rotate="90.0" stroke="BLACK" strokeType="INSIDE" width="5.0" />
             <Rectangle fx:id="wall131" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="350.0" layoutX="180.0" layoutY="269.0" rotate="90.0" stroke="BLACK" strokeType="INSIDE" width="5.0" />
+         </children>
+      </Pane>
+      <Pane fx:id="dotsPane" prefHeight="487.0" prefWidth="373.0">
+         <children>
+            <Pane layoutX="19.0" layoutY="57.0" prefHeight="1.0" prefWidth="1.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffb7ae" height="8.0" layoutX="-4.0" layoutY="-4.0" stroke="BLACK" strokeType="INSIDE" width="8.0" />
+               </children></Pane>
+            <Pane layoutX="19.0" layoutY="74.0" prefHeight="1.0" prefWidth="1.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffb7ae" height="8.0" layoutX="-4.0" layoutY="-4.0" stroke="BLACK" strokeType="INSIDE" width="8.0" />
+               </children></Pane>
+            <Pane layoutX="19.0" layoutY="91.0" prefHeight="1.0" prefWidth="1.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffb7ae" height="8.0" layoutX="-4.0" layoutY="-4.0" stroke="BLACK" strokeType="INSIDE" width="8.0" />
+               </children></Pane>
+            <Pane layoutX="19.0" layoutY="110.0" prefHeight="1.0" prefWidth="1.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffb7ae" height="8.0" layoutX="-4.0" layoutY="-4.0" stroke="BLACK" strokeType="INSIDE" width="8.0" />
+               </children></Pane>
          </children>
       </Pane>
    </children>
