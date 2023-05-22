@@ -4,10 +4,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import master.Main;
 
 import java.net.InetAddress;
@@ -20,7 +22,7 @@ public class MenuController implements Initializable {
     @FXML
     private Label ipAddress;
     @FXML
-    private void startSingleplayer() {
+    private void startSingleplayer(ActionEvent event) {
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("play-field-view.fxml"));
         Scene playScene = null;
         try {
@@ -29,11 +31,12 @@ public class MenuController implements Initializable {
         catch (Exception exception) {
             System.out.println(exception.getMessage());
         }
-        Stage playStage = new Stage();
+        ((Stage) (((Node) event.getSource()).getScene().getWindow())).setScene(playScene);
+        /*Stage playStage = new Stage();
         playStage.setTitle("Pacman");
         playStage.setScene(playScene);
         playStage.setResizable(false);
-        playStage.show();
+        playStage.show();*/
     }
     @FXML
     private void startAsHost() {

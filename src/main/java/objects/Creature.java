@@ -12,8 +12,8 @@ public abstract class Creature  {
     private ImageView image;
     public Creature(String path, double x, double y, double x1, double y1) {
         this.image = new ImageView(new Image(path));
-        this.image.setFitHeight(22);
-        this.image.setFitWidth(22);
+        this.image.setFitHeight(22.5);
+        this.image.setFitWidth(22.5);
         this.image.setLayoutX(x1);
         this.image.setLayoutY(y1);
         hitbox = new Pane();
