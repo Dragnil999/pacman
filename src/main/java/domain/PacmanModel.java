@@ -1,5 +1,6 @@
 package domain;
 
+import controllers.PlayFieldController;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
@@ -10,6 +11,9 @@ import objects.Pacman;
 import java.util.Random;
 
 public class PacmanModel {
+    private static boolean eatingMode = true;
+    public static Integer lifeCount;
+    public static boolean winner = false;
     private static void pushFromWall(Creature creature) {
         if (creature.getDirection() == Direction.LEFT) {
             creature.getHitbox().setLayoutX(creature.getHitbox().getLayoutX() + 2);
@@ -44,24 +48,6 @@ public class PacmanModel {
         else if (creature.getDirection() == Direction.DOWN) {
             creature.getHitbox().setLayoutY(creature.getHitbox().getLayoutY() + 1);
             creature.getImage().setLayoutY(creature.getImage().getLayoutY() + 1);
-        }
-    }
-    private static void moveDirectionChooser(Ghost ghost) {
-        if (ghost.getDirection() == Direction.LEFT) {
-            ghost.getDirectionChooser().setLayoutX(ghost.getDirectionChooser().getLayoutX() - 1);
-            ghost.getDirectionChooserHitbox().setLayoutX(ghost.getDirectionChooserHitbox().getLayoutX() - 1);
-        }
-        else if (ghost.getDirection() == Direction.UP) {
-            ghost.getDirectionChooser().setLayoutY(ghost.getDirectionChooser().getLayoutY() - 1);
-            ghost.getDirectionChooserHitbox().setLayoutY(ghost.getDirectionChooserHitbox().getLayoutY() - 1);
-        }
-        else if (ghost.getDirection() == Direction.RIGHT) {
-            ghost.getDirectionChooser().setLayoutX(ghost.getDirectionChooser().getLayoutX() + 1);
-            ghost.getDirectionChooserHitbox().setLayoutX(ghost.getDirectionChooserHitbox().getLayoutX() + 1);
-        }
-        else if (ghost.getDirection() == Direction.DOWN) {
-            ghost.getDirectionChooser().setLayoutY(ghost.getDirectionChooser().getLayoutY() + 1);
-            ghost.getDirectionChooserHitbox().setLayoutY(ghost.getDirectionChooserHitbox().getLayoutY() + 1);
         }
     }
     private static Direction chooseDirection(Ghost ghost, Pane wallsPane) {
@@ -107,22 +93,32 @@ public class PacmanModel {
                 AnimationTimer timer = new AnimationTimer() {
                     @Override
                     public void handle(long l) {
-                        long cornerIntersections = cornersPane.getChildren().stream().filter(bounds -> bounds.getBoundsInParent().intersects(creature.getHitbox().getBoundsInParent())).count();
-                        long wallIntersections = wallsPane.getChildren().stream().filter(bounds -> bounds.getBoundsInParent().intersects(creature.getImage().getBoundsInParent())).count();
+                        if (lifeCount <= 0) {
+                            ghostsPane.getChildren().clear();
+                            stop();
+                        }
+                        if (dotsPane.getChildren().stream().noneMatch(Node::isVisible)) {
+                            winner = true;
+                            ghostsPane.getChildren().clear();
+                            stop();
+                        }
                         if (creature instanceof Pacman) {
                             dotsPane.getChildren().stream().
                                     filter(Node::isVisible).
                                     filter(bounds -> bounds.getBoundsInParent().intersects(creature.getHitbox().getBoundsInParent())).
                                     forEach(obj -> {
                                         obj.setVisible(false);
+                                        ((Pacman) creature).setScore(((Pacman) creature).getScore() + 10);
                                     });
-                            /*ghostsPane.getChildren().stream().*/
-
+                            if (ghostsPane.getChildren().stream().
+                                    anyMatch(hitbox -> hitbox.getBoundsInParent().intersects(creature.getHitbox().getBoundsInParent()))) {
+                                lifeCount--;
+                            }
                         }
-                        if (cornerIntersections > 0) {
+                        if (cornersPane.getChildren().stream().anyMatch(bounds -> bounds.getBoundsInParent().intersects(creature.getHitbox().getBoundsInParent()))) {
                             creature.setDirection(creature.getPotentialDirection());
                         }
-                        else if (wallIntersections > 0) {
+                        else if (wallsPane.getChildren().stream().anyMatch(bounds -> bounds.getBoundsInParent().intersects(creature.getImage().getBoundsInParent()))) {
                             pushFromWall(creature);
                             creature.setPotentialDirection(Direction.NONE);
                             if (creature instanceof Ghost) {

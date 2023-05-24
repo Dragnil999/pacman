@@ -4,15 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3613d5c4-d763-4780-bec0-02973a7f97ef" name="Changes" comment="Made all dots">
+    <list default="true" id="3613d5c4-d763-4780-bec0-02973a7f97ef" name="Changes" comment="Ghost AI is done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/PlayFieldController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/PlayFieldController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/PlayFieldView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/PlayFieldView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/Boundaries.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/Crossroad.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/Direction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/Direction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/domain/PacmanModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/PacmanModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/objects/Ghost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/objects/Ghost.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/objects/Pacman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/objects/Pacman.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/master/play-field-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/master/play-field-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +102,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684767600635</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Ghost AI is done">
+      <created>1684912134293</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1684912134294</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -122,6 +128,7 @@
     <MESSAGE value="Have made all collisions" />
     <MESSAGE value="Movement ready" />
     <MESSAGE value="Made all dots" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made all dots" />
+    <MESSAGE value="Ghost AI is done" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ghost AI is done" />
   </component>
 </project>

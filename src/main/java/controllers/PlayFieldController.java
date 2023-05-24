@@ -2,21 +2,37 @@ package controllers;
 
 import domain.Direction;
 import domain.PacmanModel;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import objects.Ghost;
-import objects.Pacman;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class PlayFieldController extends PlayFieldView implements Initializable {
-    Pacman pacman;
-    Ghost redGhost;
     @FXML
     private void keyDispatcher(KeyEvent keyEvent) {
+        if (PacmanModel.lifeCount <= 0) {
+            pacman.setDisabled();
+            deathScreen();
+            initialize();
+            startNewGame();
+        }
+        else if (PacmanModel.winner) {
+            pacman.setDisabled();
+            winScreen();
+            PacmanModel.winner = false;
+            initialize();
+            dotsPane.getChildren().forEach(obj -> obj.setVisible(true));
+            startNewGame();
+        }
+
         if (keyEvent.getCode() == KeyCode.A) {
             pacman.setRotationAngle(180);
             pacman.setPotentialDirection(Direction.LEFT);
@@ -34,24 +50,64 @@ public class PlayFieldController extends PlayFieldView implements Initializable 
             pacman.setPotentialDirection(Direction.DOWN);
         }
     }
+    private void deathScreen() {
+        Alert gameOverStage = new Alert(Alert.AlertType.INFORMATION);
+        gameOverStage.setTitle("Game over");
+        gameOverStage.setHeaderText("");
+        gameOverStage.setContentText("You are dead. Try again");
+        gameOverStage.setResizable(false);
+        gameOverStage.showAndWait();
+    }
+    private void winScreen() {
+        Alert winStage = new Alert(Alert.AlertType.INFORMATION);
+        winStage.setTitle("Won!!!");
+        winStage.setHeaderText("");
+        winStage.setContentText("You've won! Congratulations!!!");
+        winStage.setResizable(false);
+        winStage.showAndWait();
+    }
+    private void startNewGame() {
+        Runnable pacmanMove = PacmanModel.movement(pacman, cornersPane, wallsPane, dotsPane, ghostsPane);
+        Thread pacmanAI = new Thread(pacmanMove);
+        pacmanAI.start();
+
+        Timer timer = new Timer();
+        for (Ghost ghost : ghostList) {
+            timer.schedule(activateTheGhost(ghost), 0);
+        }
+        Timer scoreTimer = new Timer();
+        scoreTimer.scheduleAtFixedRate(changeScore(), 0, 50);
+    }
+    private TimerTask activateTheGhost(Ghost ghost) {
+        return new TimerTask() {
+            @Override
+            public void run() {
+                Platform.runLater(() -> {
+                    playFieldPane.getChildren().addAll(ghost.getHitbox());
+                    ghostsPane.getChildren().addAll(ghost.getHitbox(), ghost.getImage());
+
+                    Runnable ghostMove = PacmanModel.movement(ghost, cornersPane, wallsPane, dotsPane, ghostsPane);
+                    Thread ghostAI = new Thread(ghostMove);
+                    ghostAI.start();
+                });
+            }
+        };
+    }
+    private TimerTask changeScore() {
+        return new TimerTask() {
+            @Override
+            public void run() {
+                Platform.runLater(() -> {
+                    scoreLabel.setText(pacman.getScore().toString());
+                });
+            }
+        };
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             initialize();
-            pacman = new Pacman(184, 269, 175, 259, Direction.LEFT);
-            playFieldPane.getChildren().addAll(pacman.getHitbox(), pacman.getImage());
-            redGhost = new Ghost(186, 189, 175, 180);
-            playFieldPane.getChildren().addAll(ghostsPane);
-            ghostsPane.getChildren().addAll(redGhost.getHitbox());
-            playFieldPane.getChildren().addAll(redGhost.getHitbox(), redGhost.getImage(), redGhost.getDirectionChooser(), redGhost.getDirectionChooserHitbox());
-
-            Runnable pacmanMove = PacmanModel.movement(pacman, cornersPane, wallsPane, dotsPane, ghostsPane);
-            Thread pacmanAI = new Thread(pacmanMove);
-            pacmanAI.start();
-
-            Runnable redGhostMove = PacmanModel.movement(redGhost, cornersPane, wallsPane, dotsPane, ghostsPane);
-            Thread redGhostAI = new Thread(redGhostMove);
-            redGhostAI.start();
+            startNewGame();
         }
         catch (Exception exception) {
             System.out.println(exception.getMessage());

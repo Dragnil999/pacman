@@ -1,17 +1,15 @@
 package controllers;
 
+import domain.Direction;
+import domain.PacmanModel;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.shape.Rectangle;
-
-import java.lang.reflect.Array;
-import java.net.URL;
+import objects.Ghost;
+import objects.Pacman;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ResourceBundle;
 
 public class PlayFieldView {
     @FXML
@@ -20,12 +18,28 @@ public class PlayFieldView {
     protected Pane cornersPane;
     @FXML
     protected Pane dotsPane;
+    @FXML
     protected Pane ghostsPane;
     @FXML
     protected AnchorPane playFieldPane;
+    @FXML
+    protected Label scoreLabel;
+    protected Pacman pacman;
+    protected List<Ghost> ghostList;
+    protected Ghost redGhost;
+    protected Ghost pinkGhost;
+    protected Ghost blueGhost;
+    protected Ghost orangeGhost;
 
     protected void initialize() {
-        ghostsPane = new Pane();
-        ghostsPane.setPrefSize(playFieldPane.getPrefWidth(), playFieldPane.getPrefHeight());
+        PacmanModel.lifeCount = 1;
+        pacman = new Pacman(184, 269, 175, 259, Direction.LEFT);
+        playFieldPane.getChildren().addAll(pacman.getHitbox(), pacman.getImage());
+        redGhost = new Ghost(86, 110, 75, 99, Direction.LEFT);
+        /*redGhost = new Ghost(186, 189, 175, 180);*/
+        pinkGhost = new Ghost(286, 110, 275, 99, Direction.DOWN);
+        blueGhost = new Ghost(286, 310, 275, 299, Direction.RIGHT);
+        orangeGhost = new Ghost(86, 310, 75, 299, Direction.UP);
+        ghostList = new ArrayList<>(List.of(redGhost, pinkGhost, blueGhost, orangeGhost));
     }
 }
