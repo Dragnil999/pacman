@@ -8,6 +8,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import objects.Ghost;
 import objects.Pacman;
+
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,13 +37,12 @@ public class PlayFieldView {
 
     protected void initialize() {
         PacmanModel.lifeCount = 1;
-        pacman = new Pacman(184, 269, 175, 259, Direction.LEFT);
+        pacman = new Pacman(184, 269, 175, 259, Direction.LEFT, PacmanModel.createPathToImage("Pacman_Yellow.gif"), 180);
         playFieldPane.getChildren().addAll(pacman.getHitbox(), pacman.getImage());
-        redGhost = new Ghost(86, 110, 75, 99, Direction.LEFT);
-        /*redGhost = new Ghost(186, 189, 175, 180);*/
-        pinkGhost = new Ghost(286, 110, 275, 99, Direction.DOWN);
-        blueGhost = new Ghost(286, 310, 275, 299, Direction.RIGHT);
-        orangeGhost = new Ghost(86, 310, 75, 299, Direction.UP);
+        redGhost = new Ghost(86, 110, 75, 99, Direction.LEFT, PacmanModel.createPathToImage("Red_Ghost.gif"));
+        pinkGhost = new Ghost(286, 110, 275, 99, Direction.DOWN, PacmanModel.createPathToImage("Pink_Ghost.gif"));
+        blueGhost = new Ghost(286, 310, 275, 299, Direction.RIGHT, PacmanModel.createPathToImage("Blue_Ghost.gif"));
+        orangeGhost = new Ghost(86, 310, 75, 299, Direction.UP, PacmanModel.createPathToImage("Orange_Ghost.gif"));
         ghostList = new ArrayList<>(List.of(redGhost, pinkGhost, blueGhost, orangeGhost));
     }
 }

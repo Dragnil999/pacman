@@ -1,19 +1,28 @@
 package domain;
 
-import controllers.PlayFieldController;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Node;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import objects.Creature;
 import objects.Ghost;
 import objects.Pacman;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.Random;
 
 public class PacmanModel {
-    private static boolean eatingMode = true;
+    public static boolean eatingMode = false;
     public static Integer lifeCount;
     public static boolean winner = false;
+    private static Integer eatingTimeStart;
+    public static String createPathToImage(String imgName){
+        return String.format("%s\\src\\main\\resources\\images\\%s", new File("").getAbsolutePath(), imgName);
+    }
     private static void pushFromWall(Creature creature) {
         if (creature.getDirection() == Direction.LEFT) {
             creature.getHitbox().setLayoutX(creature.getHitbox().getLayoutX() + 2);
@@ -86,6 +95,13 @@ public class PacmanModel {
         }
         return direction;
     }
+    private static void setNormalGhostImages(Pane ghostsPane) {
+        List<Node> ghostList = ghostsPane.getChildren().stream().filter(obj -> obj instanceof ImageView).toList();
+        ((ImageView) ghostList.get(0)).setImage(new Image(createPathToImage("Red_Ghost.gif")));
+        ((ImageView) ghostList.get(1)).setImage(new Image(createPathToImage("Pink_Ghost.gif")));
+        ((ImageView) ghostList.get(2)).setImage(new Image(createPathToImage("Blue_Ghost.gif")));
+        ((ImageView) ghostList.get(3)).setImage(new Image(createPathToImage("Orange_Ghost.gif")));
+    }
     public static Runnable movement(Creature creature, Pane cornersPane, Pane wallsPane, Pane dotsPane, Pane ghostsPane) {
         return new Runnable() {
             @Override
@@ -103,20 +119,50 @@ public class PacmanModel {
                             stop();
                         }
                         if (creature instanceof Pacman) {
+                            if ((creature.getDirection().ordinal() % 2 == 0 && creature.getPotentialDirection().ordinal() % 2 == 0) ||
+                            creature.getDirection().ordinal() % 2 != 0 && creature.getPotentialDirection().ordinal() % 2 != 0) {
+                                creature.setDirection(creature.getPotentialDirection());
+                                creature.getImage().setRotate(((Pacman) creature).getRotationAngle());
+                            }
                             dotsPane.getChildren().stream().
                                     filter(Node::isVisible).
                                     filter(bounds -> bounds.getBoundsInParent().intersects(creature.getHitbox().getBoundsInParent())).
                                     forEach(obj -> {
                                         obj.setVisible(false);
+                                        if (obj.isCache()) {
+                                            eatingMode = true;
+                                            eatingTimeStart = (int) (new Date().getTime());
+                                            ghostsPane.getChildren().stream().filter(ghost -> ghost instanceof ImageView).
+                                                    forEach(ghost -> ((ImageView) ghost).
+                                                            setImage(new Image(createPathToImage("Eadible_Ghost.gif"))));
+                                        }
                                         ((Pacman) creature).setScore(((Pacman) creature).getScore() + 10);
                                     });
                             if (ghostsPane.getChildren().stream().
                                     anyMatch(hitbox -> hitbox.getBoundsInParent().intersects(creature.getHitbox().getBoundsInParent()))) {
-                                lifeCount--;
+                                if (eatingMode) {
+                                    ghostsPane.getChildren().stream().
+                                            filter(hitbox -> hitbox.getBoundsInParent().intersects(creature.getHitbox().getBoundsInParent())).
+                                            forEach(obj -> obj.setVisible(false));
+                                }
+                                else {
+                                    lifeCount--;
+                                    ghostsPane.getChildren().stream().
+                                            filter(Node::isVisible).
+                                            forEach(obj -> obj.setVisible(true));
+                                }
                             }
+                        }
+                        if (eatingMode && ((int) (new Date().getTime()) - eatingTimeStart) > 3000) {
+                            eatingMode = false;
+                            setNormalGhostImages(ghostsPane);
+                            ghostsPane.getChildren().stream().filter(obj -> !obj.isVisible()).forEach(obj -> obj.setVisible(true));
                         }
                         if (cornersPane.getChildren().stream().anyMatch(bounds -> bounds.getBoundsInParent().intersects(creature.getHitbox().getBoundsInParent()))) {
                             creature.setDirection(creature.getPotentialDirection());
+                            if (creature instanceof Pacman) {
+                                creature.getImage().setRotate(((Pacman) creature).getRotationAngle());
+                            }
                         }
                         else if (wallsPane.getChildren().stream().anyMatch(bounds -> bounds.getBoundsInParent().intersects(creature.getImage().getBoundsInParent()))) {
                             pushFromWall(creature);

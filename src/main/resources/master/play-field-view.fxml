@@ -156,7 +156,7 @@
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffb7ae" height="6.0" layoutX="-3.0" layoutY="-3.0" stroke="BLACK" strokeType="INSIDE" width="6.0" />
                </children></Pane>
-            <Pane layoutX="19.0" layoutY="84.0" prefHeight="1.0" prefWidth="1.0">
+            <Pane cache="true" layoutX="19.0" layoutY="84.0" prefHeight="1.0" prefWidth="1.0">
                <children>
                   <Circle fill="#ffb7ae" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
                </children>
@@ -556,7 +556,7 @@
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffb7ae" height="6.0" layoutX="-3.0" layoutY="-3.0" stroke="BLACK" strokeType="INSIDE" width="6.0" />
                </children>
             </Pane>
-            <Pane layoutX="350.0" layoutY="84.0" prefHeight="1.0" prefWidth="1.0">
+            <Pane cache="true" layoutX="350.0" layoutY="84.0" prefHeight="1.0" prefWidth="1.0">
                <children>
                   <Circle fill="#ffb7ae" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
                </children>
@@ -1356,12 +1356,12 @@
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffb7ae" height="6.0" layoutX="-3.0" layoutY="-3.0" stroke="BLACK" strokeType="INSIDE" width="6.0" />
                </children>
             </Pane>
-            <Pane layoutX="19.0" layoutY="348.0" prefHeight="1.0" prefWidth="1.0">
+            <Pane cache="true" layoutX="19.0" layoutY="348.0" prefHeight="1.0" prefWidth="1.0">
                <children>
                   <Circle fill="#ffb7ae" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
                </children>
             </Pane>
-            <Pane layoutX="350.0" layoutY="348.0" prefHeight="1.0" prefWidth="1.0">
+            <Pane cache="true" layoutX="350.0" layoutY="348.0" prefHeight="1.0" prefWidth="1.0">
                <children>
                   <Circle fill="#ffb7ae" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
                </children>

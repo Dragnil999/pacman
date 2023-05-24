@@ -32,11 +32,6 @@ public class MenuController implements Initializable {
             System.out.println(exception.getMessage());
         }
         ((Stage) (((Node) event.getSource()).getScene().getWindow())).setScene(playScene);
-        /*Stage playStage = new Stage();
-        playStage.setTitle("Pacman");
-        playStage.setScene(playScene);
-        playStage.setResizable(false);
-        playStage.show();*/
     }
     @FXML
     private void startAsHost() {

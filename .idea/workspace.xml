@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3613d5c4-d763-4780-bec0-02973a7f97ef" name="Changes" comment="Ghost AI is done">
+    <list default="true" id="3613d5c4-d763-4780-bec0-02973a7f97ef" name="Changes" comment="Made score counting">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/PlayFieldController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/PlayFieldController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/MenuController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/PlayFieldView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/PlayFieldView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/domain/PacmanModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/PacmanModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/objects/Ghost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/objects/Ghost.java" afterDir="false" />
@@ -52,14 +52,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/danil/IdeaProjects/Practice2&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "C:/Users/danil/IdeaProjects/LabaMVC"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\danil\IdeaProjects\pacman\src\main\resources\master" />
@@ -109,7 +109,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684912134294</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Made score counting">
+      <created>1684930818901</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1684930818901</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -129,6 +136,7 @@
     <MESSAGE value="Movement ready" />
     <MESSAGE value="Made all dots" />
     <MESSAGE value="Ghost AI is done" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ghost AI is done" />
+    <MESSAGE value="Made score counting" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made score counting" />
   </component>
 </project>
