@@ -1,11 +1,6 @@
 package objects;
 
 import domain.Direction;
-import javafx.scene.image.Image;
-import master.Main;
-
-import java.net.URL;
-import java.nio.file.Path;
 
 public class Pacman extends Creature {
     private double rotationAngle;
@@ -15,6 +10,8 @@ public class Pacman extends Creature {
         super(path, x, y, x1, y1);
         setPotentialDirection(direction);
         setDirection(direction);
+        getImage().setFitWidth(22.75);
+        getImage().setFitHeight(22.75);
         getImage().setRotate(rotationAngle);
         score = 0;
     }
