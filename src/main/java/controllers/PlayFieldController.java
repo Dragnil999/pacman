@@ -1,15 +1,11 @@
 package controllers;
 
-import domain.Boundaries;
 import domain.Direction;
 import domain.PacmanModel;
-import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.Pane;
 import objects.Ghost;
 import objects.Pacman;
 
@@ -41,16 +37,19 @@ public class PlayFieldController extends PlayFieldView implements Initializable 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
+            initialize();
             pacman = new Pacman(184, 269, 175, 259, Direction.LEFT);
             playFieldPane.getChildren().addAll(pacman.getHitbox(), pacman.getImage());
             redGhost = new Ghost(186, 189, 175, 180);
+            playFieldPane.getChildren().addAll(ghostsPane);
+            ghostsPane.getChildren().addAll(redGhost.getHitbox());
             playFieldPane.getChildren().addAll(redGhost.getHitbox(), redGhost.getImage(), redGhost.getDirectionChooser(), redGhost.getDirectionChooserHitbox());
 
-            Runnable pacmanMove = PacmanModel.movement(pacman, cornersPane, wallsPane, dotsPane);
+            Runnable pacmanMove = PacmanModel.movement(pacman, cornersPane, wallsPane, dotsPane, ghostsPane);
             Thread pacmanAI = new Thread(pacmanMove);
             pacmanAI.start();
 
-            Runnable redGhostMove = PacmanModel.movement(redGhost, cornersPane, wallsPane, dotsPane);
+            Runnable redGhostMove = PacmanModel.movement(redGhost, cornersPane, wallsPane, dotsPane, ghostsPane);
             Thread redGhostAI = new Thread(redGhostMove);
             redGhostAI.start();
         }

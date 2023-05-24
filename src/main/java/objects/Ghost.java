@@ -14,6 +14,8 @@ public class Ghost extends Creature {
         super("C:\\Users\\danil\\IdeaProjects\\pacman\\src\\main\\resources\\images\\Red_Ghost.png", x, y, x1, y1);
         setDirection(Direction.LEFT);
         setPotentialDirection(Direction.LEFT);
+        /*getImage().setFitHeight(23);
+        getImage().setFitWidth(23);*/
         directionChooser = new Rectangle();
         directionChooserHitbox = new Pane();
         directionChooserHitbox.setLayoutX(x - 30.0);

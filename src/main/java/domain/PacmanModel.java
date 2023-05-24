@@ -7,6 +7,8 @@ import objects.Creature;
 import objects.Ghost;
 import objects.Pacman;
 
+import java.util.Random;
+
 public class PacmanModel {
     private static void pushFromWall(Creature creature) {
         if (creature.getDirection() == Direction.LEFT) {
@@ -50,8 +52,8 @@ public class PacmanModel {
             ghost.getDirectionChooserHitbox().setLayoutX(ghost.getDirectionChooserHitbox().getLayoutX() - 1);
         }
         else if (ghost.getDirection() == Direction.UP) {
-            ghost.getDirectionChooser().setLayoutY(ghost.getDirectionChooser().getLayoutY() + 1);
-            ghost.getDirectionChooserHitbox().setLayoutY(ghost.getDirectionChooserHitbox().getLayoutY() + 1);
+            ghost.getDirectionChooser().setLayoutY(ghost.getDirectionChooser().getLayoutY() - 1);
+            ghost.getDirectionChooserHitbox().setLayoutY(ghost.getDirectionChooserHitbox().getLayoutY() - 1);
         }
         else if (ghost.getDirection() == Direction.RIGHT) {
             ghost.getDirectionChooser().setLayoutX(ghost.getDirectionChooser().getLayoutX() + 1);
@@ -63,14 +65,42 @@ public class PacmanModel {
         }
     }
     private static Direction chooseDirection(Ghost ghost, Pane wallsPane) {
-        double x = ghost.getDirectionChooser().getLayoutX();
-        double y = ghost.getDirectionChooser().getLayoutY();
-        if (wallsPane.getChildren().stream().noneMatch(bounds -> bounds.getBoundsInParent().intersects(ghost.getDirectionChooser().getBoundsInParent()))) {
-           return Direction.LEFT;
+        double x = ghost.getImage().getLayoutX();
+        double y = ghost.getImage().getLayoutY();
+        int count = 0;
+        Random random = new Random();
+        int dir = random.nextInt(4);
+        int i = -1;
+        Direction direction = Direction.values()[dir];
+        while (count < 4) {
+            if (dir % 2 == 0) {
+                ghost.getImage().setLayoutX(ghost.getImage().getLayoutX() + i);
+            }
+            else {
+                ghost.getImage().setLayoutY(ghost.getImage().getLayoutY() + i);
+            }
+            if (wallsPane.getChildren().stream().noneMatch(bounds -> bounds.getBoundsInParent().intersects(ghost.getImage().getBoundsInParent()))) {
+                ghost.getImage().setLayoutX(x);
+                ghost.getImage().setLayoutY(y);
+                break;
+            }
+            else {
+                ghost.getImage().setLayoutX(x);
+                ghost.getImage().setLayoutY(y);
+                count++;
+                dir = random.nextInt(4);
+                if (dir == 0 || dir == 3) {
+                    i = -2;
+                }
+                else {
+                    i = 2;
+                }
+                direction = Direction.values()[dir];
+            }
         }
-        return Direction.DOWN;
+        return direction;
     }
-    public static Runnable movement(Creature creature, Pane cornersPane, Pane wallsPane, Pane dotsPane) {
+    public static Runnable movement(Creature creature, Pane cornersPane, Pane wallsPane, Pane dotsPane, Pane ghostsPane) {
         return new Runnable() {
             @Override
             public void run() {
@@ -86,19 +116,8 @@ public class PacmanModel {
                                     forEach(obj -> {
                                         obj.setVisible(false);
                                     });
-                        }
-                        else if (creature instanceof Ghost) {
-                            if (cornersPane.getChildren().stream().noneMatch(bounds -> bounds.getBoundsInParent().intersects(((Ghost) creature).getDirectionChooserHitbox().getBoundsInParent()))) {
-                                moveDirectionChooser((Ghost) creature);
-                            }
-                            else {
-                                creature.setPotentialDirection(chooseDirection((Ghost) creature, wallsPane));
-                                ((Ghost) creature).getDirectionChooserHitbox().setLayoutX(creature.getHitbox().getLayoutX());
-                                ((Ghost) creature).getDirectionChooserHitbox().setLayoutY(creature.getHitbox().getLayoutY() + 30);
-                                ((Ghost) creature).getDirectionChooser().setLayoutX(((Ghost) creature).getDirectionChooserHitbox().getLayoutX() - 9);
-                                ((Ghost) creature).getDirectionChooser().setLayoutY(((Ghost) creature).getDirectionChooserHitbox().getLayoutY() - 9);
-                                System.out.println("bebra");
-                            }
+                            /*ghostsPane.getChildren().stream().*/
+
                         }
                         if (cornerIntersections > 0) {
                             creature.setDirection(creature.getPotentialDirection());
@@ -106,9 +125,13 @@ public class PacmanModel {
                         else if (wallIntersections > 0) {
                             pushFromWall(creature);
                             creature.setPotentialDirection(Direction.NONE);
+                            if (creature instanceof Ghost) {
+                                creature.setPotentialDirection(chooseDirection((Ghost) creature, wallsPane));
+                            }
                             creature.setDirection(creature.getPotentialDirection());
                         }
                         move(creature);
+
                     }
                 };
                 timer.start();

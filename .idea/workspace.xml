@@ -4,14 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3613d5c4-d763-4780-bec0-02973a7f97ef" name="Changes" comment="Movement ready">
-      <change afterPath="$PROJECT_DIR$/src/main/java/objects/Ghost.java" afterDir="false" />
+    <list default="true" id="3613d5c4-d763-4780-bec0-02973a7f97ef" name="Changes" comment="Made all dots">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/MenuController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/PlayFieldController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/PlayFieldController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/PlayFieldView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/PlayFieldView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/Boundaries.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/Crossroad.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/Direction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/Direction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/domain/PacmanModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/PacmanModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/objects/Creature.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/objects/Creature.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/master/play-field-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/master/play-field-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/objects/Ghost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/objects/Ghost.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +96,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683998743131</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Made all dots">
+      <created>1684767600635</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1684767600635</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -113,6 +121,7 @@
     <MESSAGE value="Top collision is done" />
     <MESSAGE value="Have made all collisions" />
     <MESSAGE value="Movement ready" />
-    <option name="LAST_COMMIT_MESSAGE" value="Movement ready" />
+    <MESSAGE value="Made all dots" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made all dots" />
   </component>
 </project>
