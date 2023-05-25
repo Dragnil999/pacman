@@ -4,10 +4,14 @@ import domain.Direction;
 import domain.PacmanModel;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.Stage;
+import master.Main;
 import objects.Ghost;
 
 import java.net.URL;
@@ -59,12 +63,18 @@ public class PlayFieldController extends PlayFieldView implements Initializable 
         gameOverStage.showAndWait();
     }
     private void winScreen() {
-        Alert winStage = new Alert(Alert.AlertType.INFORMATION);
-        winStage.setTitle("Won!!!");
-        winStage.setHeaderText("");
-        winStage.setContentText("You've won! Congratulations!!!");
-        winStage.setResizable(false);
-        winStage.showAndWait();
+        ScoreData.setScore(pacman.getScore());
+        Stage winStage = new Stage();
+        try {
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("win-screen-view.fxml"));
+            winStage.setScene(new Scene(loader.load(), 368, 487));
+            winStage.setResizable(false);
+            winStage.setTitle("Won!!!");
+            winStage.showAndWait();
+        }
+        catch (Exception exception) {
+            System.out.println(exception.getMessage());
+        }
     }
     private void startNewGame() {
         Runnable pacmanMove = PacmanModel.movement(pacman, cornersPane, wallsPane, dotsPane, ghostsPane);

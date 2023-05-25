@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="487.0" prefWidth="368.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.WinScreenController">
+   <children>
+      <VBox fx:id="leaderboard" alignment="TOP_CENTER" layoutX="81.0" layoutY="74.0" prefHeight="255.0" prefWidth="218.0" />
+      <HBox alignment="TOP_CENTER" layoutX="84.0" layoutY="383.0" prefHeight="25.0" prefWidth="200.0">
+         <children>
+            <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveResult" text="Save you result">
+               <HBox.margin>
+                  <Insets right="30.0" />
+               </HBox.margin></Button>
+            <Button mnemonicParsing="false" onAction="#backToGame" text="Continue" />
+         </children>
+      </HBox>
+      <TextField fx:id="nameField" layoutX="110.0" layoutY="341.0" promptText="Enter you name" />
+   </children>
+</AnchorPane>
