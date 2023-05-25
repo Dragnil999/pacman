@@ -87,7 +87,7 @@
             <Pane fx:id="corner271111111112111212111111111111111" layoutX="325.0" layoutY="348.0" prefHeight="1.0" prefWidth="1.0" />
             <Pane fx:id="corner2711111111121112121111111111111111" layoutX="325.0" layoutY="388.0" prefHeight="1.0" prefWidth="1.0" />
          </children></Pane>
-      <Pane fx:id="wallsPane" prefHeight="487.0" prefWidth="373.0">
+      <Pane fx:id="wallsPane" prefHeight="487.0" prefWidth="373.0" visible="false">
          <children>
             <Rectangle fx:id="wall1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="42.0" layoutX="100.0" layoutY="249.0" stroke="BLACK" strokeType="INSIDE" width="13.0" />
             <Rectangle fx:id="wall2" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="42.0" layoutX="259.0" layoutY="249.0" stroke="BLACK" strokeType="INSIDE" width="13.0" />

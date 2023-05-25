@@ -101,6 +101,16 @@ public class PacmanModel {
         ((ImageView) ghostList.get(2)).setImage(new Image(createPathToImage("Blue_Ghost.gif")));
         ((ImageView) ghostList.get(3)).setImage(new Image(createPathToImage("Orange_Ghost.gif")));
     }
+    private static void goingOffScreen(Creature creature, Pane wallsPane) {
+        if (creature.getHitbox().getLayoutX() < 0) {
+            creature.getHitbox().setLayoutX(wallsPane.getPrefWidth());
+            creature.getImage().setLayoutX(wallsPane.getPrefWidth() - 11);
+        }
+        else if (creature.getHitbox().getLayoutX() > wallsPane.getPrefWidth()) {
+            creature.getHitbox().setLayoutX(0);
+            creature.getImage().setLayoutX(-11);
+        }
+    }
     public static Runnable movement(Creature creature, Pane cornersPane, Pane wallsPane, Pane dotsPane, Pane ghostsPane) {
         return new Runnable() {
             @Override
@@ -151,6 +161,7 @@ public class PacmanModel {
                                             forEach(obj -> obj.setVisible(true));
                                 }
                             }
+                            goingOffScreen(creature, wallsPane);
                         }
                         if (eatingMode && ((int) (new Date().getTime()) - eatingTimeStart) > 3000) {
                             eatingMode = false;

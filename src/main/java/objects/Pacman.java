@@ -12,7 +12,7 @@ public class Pacman extends Creature {
         setDirection(direction);
         getImage().setFitWidth(22.75);
         getImage().setFitHeight(22.75);
-        getImage().setRotate(rotationAngle);
+        this.rotationAngle = rotationAngle;
         score = 0;
     }
     public void setDisabled() {

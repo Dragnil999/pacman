@@ -33,7 +33,7 @@ public class PlayFieldView {
 
     protected void initialize() {
         PacmanModel.lifeCount = 1;
-        pacman = new Pacman(184, 269, 175, 259, Direction.LEFT, PacmanModel.createPathToImage("Pacman_Yellow.gif"), 180);
+        pacman = new Pacman(184, 269, 175, 259, Direction.LEFT, PacmanModel.createPathToImage("Pacman_Yellow.gif"), 180.0);
         playFieldPane.getChildren().addAll(pacman.getHitbox(), pacman.getImage());
         redGhost = new Ghost(86, 110, 75, 99, Direction.LEFT, PacmanModel.createPathToImage("Red_Ghost.gif"));
         pinkGhost = new Ghost(286, 110, 275, 99, Direction.DOWN, PacmanModel.createPathToImage("Pink_Ghost.gif"));
