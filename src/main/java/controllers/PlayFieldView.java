@@ -41,6 +41,7 @@ public class PlayFieldView {
         pacman = new Pacman(184, 269, 175, 259, Direction.LEFT, PacmanModel.createPathToImage("Pacman_Yellow.gif"), 180.0);
         playFieldPane.getChildren().addAll(pacman.getHitbox(), pacman.getImage());
         if (Parameters.getCountOfPlayers() == 2) {
+            PacmanModel.lifeCount = 60;
             scoreLabel1.setVisible(true);
             if (Parameters.getStatus() == PlayerStat.HOST) {
                 pacwoman = new Pacman(214, 269, 205, 259, Direction.RIGHT, PacmanModel.createPathToImage("Pacman_Yellow.gif"), 0.0);

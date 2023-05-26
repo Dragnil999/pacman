@@ -72,6 +72,9 @@ public class PlayFieldController extends PlayFieldView implements Initializable 
         gameOverStage.setContentText("You are dead. Try again");
         gameOverStage.setResizable(false);
         gameOverStage.showAndWait();
+        if (Parameters.getCountOfPlayers() == 2) {
+            System.exit(0);
+        }
     }
     private void winScreen() {
         ScoreData.setScore(pacman.getScore());

@@ -46,6 +46,9 @@ public class WinScreenController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Database.connection("192.168.0.14", "5432");
+        if (ScoreData.getScore() == -1) {
+            saveButton.setDisable(true);
+        }
         showResults();
     }
 }

@@ -112,9 +112,6 @@ public class PacmanModel {
             creature.getImage().setLayoutX(-11);
         }
     }
-    private static void setPotentialDirectionFromHost() {
-
-    }
     public static Runnable movement(Creature creature, Pane cornersPane, Pane wallsPane, Pane dotsPane, Pane ghostsPane) {
         return new Runnable() {
             @Override

@@ -17,6 +17,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.robot.Robot;
 import javafx.stage.Stage;
@@ -34,6 +35,8 @@ public class MenuController implements Initializable {
     private InetAddress inetAddress;
     @FXML
     private Label ipAddress;
+    @FXML
+    private TextField hostIPAddress;
     private void showWaitingStage() {
         Stage waitingStage = new Stage();
         try {
@@ -89,7 +92,9 @@ public class MenuController implements Initializable {
         Parameters.setCountOfPlayers(2);
         Parameters.setStatus(PlayerStat.CLIENT);
         Client client = new Client();
-        client.connect(inetAddress.getHostAddress(), 3345);
+        if (hostIPAddress.getText().matches("^(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$")) {
+            client.connect(hostIPAddress.getText(), 3345);
+        }
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("play-field-view.fxml"));
         Scene playScene = null;
         try {
@@ -101,6 +106,20 @@ public class MenuController implements Initializable {
         ((Stage) (((Node) event.getSource()).getScene().getWindow())).setScene(playScene);
     }
     @FXML
+    private void leaderboardView() {
+        Stage winStage = new Stage();
+        try {
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("win-screen-view.fxml"));
+            winStage.setScene(new Scene(loader.load(), 368, 487));
+            winStage.setResizable(false);
+            winStage.setTitle("Won!!!");
+            winStage.showAndWait();
+        }
+        catch (Exception exception) {
+            System.out.println(exception.getMessage());
+        }
+    }
+    @FXML
     public void exit() {
         System.exit(0);
     }
@@ -109,6 +128,7 @@ public class MenuController implements Initializable {
         try {
             inetAddress = InetAddress.getLocalHost();
             ipAddress.setText(inetAddress.getHostAddress());
+            hostIPAddress.setText(inetAddress.getHostAddress());
         }
         catch (Exception exception) {
             ipAddress.setText("localhost");

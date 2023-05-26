@@ -1,7 +1,7 @@
 package controllers;
 
 public class ScoreData {
-    private static Integer score;
+    private static Integer score = -1;
 
     public static Integer getScore() {
         return score;
