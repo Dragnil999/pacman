@@ -1,5 +1,6 @@
 package domain;
 
+import dto.Parameters;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
@@ -22,22 +23,22 @@ public class PacmanModel {
     public static String createPathToImage(String imgName){
         return String.format("%s\\src\\main\\resources\\images\\%s", new File("").getAbsolutePath(), imgName);
     }
-    private static void pushFromWall(Creature creature) {
+    private static void pushFromWall(Creature creature, double distance) {
         if (creature.getDirection() == Direction.LEFT) {
-            creature.getHitbox().setLayoutX(creature.getHitbox().getLayoutX() + 2);
-            creature.getImage().setLayoutX(creature.getImage().getLayoutX() + 2);
+            creature.getHitbox().setLayoutX(creature.getHitbox().getLayoutX() + distance);
+            creature.getImage().setLayoutX(creature.getImage().getLayoutX() + distance);
         }
         else if (creature.getDirection() == Direction.UP) {
-            creature.getHitbox().setLayoutY(creature.getHitbox().getLayoutY() + 2);
-            creature.getImage().setLayoutY(creature.getImage().getLayoutY() + 2);
+            creature.getHitbox().setLayoutY(creature.getHitbox().getLayoutY() + distance);
+            creature.getImage().setLayoutY(creature.getImage().getLayoutY() + distance);
         }
         else if (creature.getDirection() == Direction.RIGHT) {
-            creature.getHitbox().setLayoutX(creature.getHitbox().getLayoutX() - 2);
-            creature.getImage().setLayoutX(creature.getImage().getLayoutX() - 2);
+            creature.getHitbox().setLayoutX(creature.getHitbox().getLayoutX() - distance);
+            creature.getImage().setLayoutX(creature.getImage().getLayoutX() - distance);
         }
         else if (creature.getDirection() == Direction.DOWN) {
-            creature.getHitbox().setLayoutY(creature.getHitbox().getLayoutY() - 2);
-            creature.getImage().setLayoutY(creature.getImage().getLayoutY() - 2);
+            creature.getHitbox().setLayoutY(creature.getHitbox().getLayoutY() - distance);
+            creature.getImage().setLayoutY(creature.getImage().getLayoutY() - distance);
         }
     }
     private static void move(Creature creature) {
@@ -111,6 +112,9 @@ public class PacmanModel {
             creature.getImage().setLayoutX(-11);
         }
     }
+    private static void setPotentialDirectionFromHost() {
+
+    }
     public static Runnable movement(Creature creature, Pane cornersPane, Pane wallsPane, Pane dotsPane, Pane ghostsPane) {
         return new Runnable() {
             @Override
@@ -175,15 +179,16 @@ public class PacmanModel {
                             }
                         }
                         else if (wallsPane.getChildren().stream().anyMatch(bounds -> bounds.getBoundsInParent().intersects(creature.getImage().getBoundsInParent()))) {
-                            pushFromWall(creature);
+                            pushFromWall(creature, 2);
                             creature.setPotentialDirection(Direction.NONE);
-                            if (creature instanceof Ghost) {
-                                creature.setPotentialDirection(chooseDirection((Ghost) creature, wallsPane));
+                            if (Parameters.getStatus() == PlayerStat.HOST) {
+                                if (creature instanceof Ghost) {
+                                        creature.setPotentialDirection(chooseDirection((Ghost) creature, wallsPane));
+                                }
                             }
                             creature.setDirection(creature.getPotentialDirection());
                         }
                         move(creature);
-
                     }
                 };
                 timer.start();

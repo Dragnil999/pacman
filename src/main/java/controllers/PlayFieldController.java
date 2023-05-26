@@ -2,6 +2,9 @@ package controllers;
 
 import domain.Direction;
 import domain.PacmanModel;
+import domain.PlayerStat;
+import dto.Parameters;
+import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -40,18 +43,26 @@ public class PlayFieldController extends PlayFieldView implements Initializable 
         if (keyEvent.getCode() == KeyCode.A) {
             pacman.setRotationAngle(180);
             pacman.setPotentialDirection(Direction.LEFT);
+            Parameters.setPacmanPotentialDirection(Direction.LEFT);
+            Parameters.setPacmanRotationAngle(180.0);
         }
         else if (keyEvent.getCode() == KeyCode.W) {
             pacman.setRotationAngle(270);
             pacman.setPotentialDirection(Direction.UP);
+            Parameters.setPacmanPotentialDirection(Direction.UP);
+            Parameters.setPacmanRotationAngle(270.0);
         }
         else if (keyEvent.getCode() == KeyCode.D) {
             pacman.setRotationAngle(0);
             pacman.setPotentialDirection(Direction.RIGHT);
+            Parameters.setPacmanPotentialDirection(Direction.RIGHT);
+            Parameters.setPacmanRotationAngle(0.0);
         }
         else if (keyEvent.getCode() == KeyCode.S) {
             pacman.setRotationAngle(90);
             pacman.setPotentialDirection(Direction.DOWN);
+            Parameters.setPacmanPotentialDirection(Direction.DOWN);
+            Parameters.setPacmanRotationAngle(90.0);
         }
     }
     private void deathScreen() {
@@ -81,12 +92,21 @@ public class PlayFieldController extends PlayFieldView implements Initializable 
         Thread pacmanAI = new Thread(pacmanMove);
         pacmanAI.start();
 
+        if (Parameters.getCountOfPlayers() == 2) {
+            Runnable pacwomanMove = PacmanModel.movement(pacwoman, cornersPane, wallsPane, dotsPane, ghostsPane);
+            Thread pacwomanAI = new Thread(pacwomanMove);
+            pacwomanAI.start();
+        }
+
         Timer timer = new Timer();
         for (Ghost ghost : ghostList) {
             timer.schedule(activateTheGhost(ghost), 0);
         }
         Timer scoreTimer = new Timer();
         scoreTimer.scheduleAtFixedRate(changeScore(), 0, 50);
+        if (Parameters.getCountOfPlayers() == 2) {
+            updateDirections();
+        }
     }
     private TimerTask activateTheGhost(Ghost ghost) {
         return new TimerTask() {
@@ -108,10 +128,46 @@ public class PlayFieldController extends PlayFieldView implements Initializable 
             @Override
             public void run() {
                 Platform.runLater(() -> {
-                    scoreLabel.setText(pacman.getScore().toString());
+                    if (Parameters.getCountOfPlayers() == 2) {
+                        if (Parameters.getStatus() == PlayerStat.HOST) {
+                            scoreLabel.setText(pacman.getScore().toString());
+                            scoreLabel1.setText(pacwoman.getScore().toString());
+                        }
+                        else {
+                            scoreLabel.setText(pacwoman.getScore().toString());
+                            scoreLabel1.setText(pacman.getScore().toString());
+                        }
+                    }
+                    else {
+                        scoreLabel.setText(pacman.getScore().toString());
+                    }
                 });
             }
         };
+    }
+    private void updateDirections() {
+        AnimationTimer update = new AnimationTimer() {
+            @Override
+            public void handle(long l) {
+                Platform.runLater(() -> {
+                    pacwoman.setPotentialDirection(Parameters.getPacwomanPotentialDirection());
+                    pacwoman.setRotationAngle(Parameters.getPacwomanRotationAngle());
+                    if (Parameters.getStatus() == PlayerStat.HOST) {
+                        Parameters.setRedGhostPotentialDirection(redGhost.getPotentialDirection());
+                        Parameters.setPinkGhostPotentialDirection(pinkGhost.getPotentialDirection());
+                        Parameters.setBlueGhostPotentialDirection(blueGhost.getPotentialDirection());
+                        Parameters.setOrangeGhostPotentialDirection(orangeGhost.getPotentialDirection());
+                    }
+                    else if (Parameters.getStatus() == PlayerStat.CLIENT) {
+                        redGhost.setPotentialDirection(Parameters.getRedGhostPotentialDirection());
+                        pinkGhost.setPotentialDirection(Parameters.getPinkGhostPotentialDirection());
+                        blueGhost.setPotentialDirection(Parameters.getBlueGhostPotentialDirection());
+                        orangeGhost.setPotentialDirection(Parameters.getOrangeGhostPotentialDirection());
+                    }
+                });
+            }
+        };
+        update.start();
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
