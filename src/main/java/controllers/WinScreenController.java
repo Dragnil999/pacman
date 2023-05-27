@@ -5,7 +5,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -26,7 +25,9 @@ public class WinScreenController implements Initializable {
 
     @FXML
     private void saveResult() {
-        Database.addToDB(nameField.getText(), ScoreData.getScore());
+        if (!nameField.getText().isEmpty()) {
+            Database.addToDB(nameField.getText(), ScoreData.getScore());
+        }
         saveButton.setDisable(true);
         showResults();
     }
@@ -45,7 +46,7 @@ public class WinScreenController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Database.connection("192.168.0.14", "5432");
+        Database.connection("127.0.0.1", "5432");
         if (ScoreData.getScore() == -1) {
             saveButton.setDisable(true);
         }

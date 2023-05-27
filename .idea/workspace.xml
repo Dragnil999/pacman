@@ -4,18 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3613d5c4-d763-4780-bec0-02973a7f97ef" name="Changes" comment="Client-server interactions">
+    <list default="true" id="3613d5c4-d763-4780-bec0-02973a7f97ef" name="Changes" comment="Come to gold">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/MenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/PlayFieldController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/PlayFieldController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/PlayFieldView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/PlayFieldView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ScoreData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ScoreData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/WinScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/WinScreenController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/PacmanModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/PacmanModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dto/Inputs.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dto/MessageDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dto/ParametersDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/master/menu-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/master/menu-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/Server.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -189,7 +183,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685093735641</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Come to gold">
+      <created>1685097866000</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1685097866000</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -215,6 +216,7 @@
     <MESSAGE value="Game are ready (update ver. 0.2)" />
     <MESSAGE value="Made database" />
     <MESSAGE value="Client-server interactions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Client-server interactions" />
+    <MESSAGE value="Come to gold" />
+    <option name="LAST_COMMIT_MESSAGE" value="Come to gold" />
   </component>
 </project>

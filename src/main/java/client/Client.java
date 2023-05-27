@@ -12,16 +12,18 @@ public class Client extends Thread {
     private Socket client;
     private ObjectOutputStream out;
     private ObjectInputStream in;
-    public void connect(String host, int port) {
+    public boolean connect(String host, int port) {
         try {
             client = new Socket(host, port);
             System.out.println("Client successfully connected to server");
             out = new ObjectOutputStream(client.getOutputStream());
             in = new ObjectInputStream(client.getInputStream());
             start();
+            return true;
         }
         catch (Exception exception) {
             System.out.println(exception.getMessage());
+            return false;
         }
     }
     @Override

@@ -32,7 +32,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MenuController implements Initializable {
-    private InetAddress inetAddress;
     @FXML
     private Label ipAddress;
     @FXML
@@ -93,7 +92,9 @@ public class MenuController implements Initializable {
         Parameters.setStatus(PlayerStat.CLIENT);
         Client client = new Client();
         if (hostIPAddress.getText().matches("^(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$")) {
-            client.connect(hostIPAddress.getText(), 3345);
+            if (!client.connect(hostIPAddress.getText(), 3345)) {
+                return;
+            };
         }
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("play-field-view.fxml"));
         Scene playScene = null;
@@ -112,7 +113,7 @@ public class MenuController implements Initializable {
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("win-screen-view.fxml"));
             winStage.setScene(new Scene(loader.load(), 368, 487));
             winStage.setResizable(false);
-            winStage.setTitle("Won!!!");
+            winStage.setTitle("Leaderboard");
             winStage.showAndWait();
         }
         catch (Exception exception) {
@@ -126,7 +127,7 @@ public class MenuController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            inetAddress = InetAddress.getLocalHost();
+            InetAddress inetAddress = InetAddress.getLocalHost();
             ipAddress.setText(inetAddress.getHostAddress());
             hostIPAddress.setText(inetAddress.getHostAddress());
         }
